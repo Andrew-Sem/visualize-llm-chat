@@ -7,7 +7,7 @@ import { mockMessages } from "../mock/messages";
 export default async function Home() {
   return (
     <HydrateClient>
-      <main className="">
+      <main className="container">
         <h1 className="text-5xl">Visualize llm chat</h1>
         <Button>Hello world</Button>
         <ModeToggle />

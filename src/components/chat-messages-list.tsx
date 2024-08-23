@@ -1,11 +1,36 @@
 import { type Message } from "../types/message";
-import { ChatMessage } from "./chat-message";
+import { ChatMessageGroup } from "./chat-messages-group";
 
 export const ChatMessagesList = ({ messages }: { messages: Message[] }) => {
+  const groupedMessages: Message[][] = [];
+  let currentGroup: Message[] = [];
+  let currentIsUser: boolean | null = null;
+
+  messages.forEach((message) => {
+    const isUser = message.role === "user";
+    if (isUser !== currentIsUser) {
+      if (currentGroup.length > 0) {
+        groupedMessages.push(currentGroup);
+      }
+      currentGroup = [message];
+      currentIsUser = isUser;
+    } else {
+      currentGroup.push(message);
+    }
+  });
+
+  if (currentGroup.length > 0) {
+    groupedMessages.push(currentGroup);
+  }
+
   return (
-    <div className="space-y-2">
-      {messages.map((message) => (
-        <ChatMessage key={Math.random()} message={message} />
+    <div className="space-y-4">
+      {groupedMessages.map((group, index) => (
+        <ChatMessageGroup
+          key={index}
+          messages={group}
+          isUser={group[0]?.role === "user"}
+        />
       ))}
     </div>
   );
