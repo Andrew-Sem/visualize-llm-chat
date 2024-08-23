@@ -26,7 +26,7 @@ export const ChatMessageGroup = ({
       )}
     </div>
     {isUser && (
-      <div className="mt-2 flex-shrink-0 self-start rounded-full bg-muted p-2">
+      <div className="flex-shrink-0 self-start rounded-full bg-muted p-2">
         <UserRoundIcon className="h-5 w-5 text-muted-foreground" />
       </div>
     )}
