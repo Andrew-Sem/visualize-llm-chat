@@ -19,14 +19,14 @@ export default async function Home() {
           direction="horizontal"
           className="mt-8 rounded-lg border"
         >
-          <ResizablePanel defaultSize={75} minSize={30}>
+          <ResizablePanel defaultSize={50} minSize={30}>
             <ScrollArea className="h-[80vh] p-4">
               <ChatMessagesList messages={mockMessages} />
             </ScrollArea>
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel
-            defaultSize={75}
+            defaultSize={50}
             minSize={30}
             className="hidden md:block"
           >
