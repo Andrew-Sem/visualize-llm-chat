@@ -42,7 +42,7 @@ export default async function Home() {
             direction="horizontal"
             className="rounded-lg border"
           >
-            <ResizablePanel defaultSize={40} minSize={30}>
+            <ResizablePanel defaultSize={40} minSize={35}>
               <ScrollArea className="h-[90vh] py-4">
                 <ChatMessagesList messages={mockMessages} />
               </ScrollArea>
