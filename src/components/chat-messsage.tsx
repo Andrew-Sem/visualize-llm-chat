@@ -1,3 +1,9 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { PhoneIcon, WrenchIcon } from "lucide-react";
 import { cn } from "../lib/utils";
 import type { AssistantMessage, Message, ToolMessage } from "../types/message";
@@ -56,23 +62,37 @@ const NonUserChatMessage = ({
         )}
       >
         {message.role === "tool" ? (
-          <>
-            <pre className="text-wrap break-all">
-              {JSON.stringify(message, null, 2)}
-            </pre>
-            <div className="absolute right-2 top-2 text-muted-foreground">
-              <WrenchIcon className="h-4 w-4" />
-            </div>
-          </>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <span>Tool result</span>
+                <div className="absolute right-2 top-2 text-muted-foreground">
+                  <WrenchIcon className="h-4 w-4" />
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <pre className="text-wrap break-all text-xs">
+                  {JSON.stringify(message, null, 2)}
+                </pre>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         ) : message.tool_calls?.length ? (
-          <div>
-            <pre className="text-wrap break-all">
-              {JSON.stringify(message, null, 2)}
-            </pre>
-            <div className="absolute right-2 top-2 text-muted-foreground">
-              <PhoneIcon className="h-4 w-4" />
-            </div>
-          </div>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <span>Tool call</span>
+                <div className="absolute right-2 top-2 text-muted-foreground">
+                  <PhoneIcon className="h-4 w-4" />
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <pre className="text-wrap break-all text-xs">
+                  {JSON.stringify(message, null, 2)}
+                </pre>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         ) : (
           <div>{message.content}</div>
         )}
