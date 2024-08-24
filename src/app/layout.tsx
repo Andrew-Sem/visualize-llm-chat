@@ -6,6 +6,7 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "next-themes";
+import { AppHeader } from "../components/app-header";
 import { cn } from "../lib/utils";
 
 export const metadata: Metadata = {
@@ -36,7 +37,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+          <TRPCReactProvider>
+            <AppHeader />
+            {children}
+          </TRPCReactProvider>
         </ThemeProvider>
       </body>
     </html>

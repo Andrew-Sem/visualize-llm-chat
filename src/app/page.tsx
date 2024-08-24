@@ -7,15 +7,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HydrateClient } from "@/trpc/server";
 import { ChatMessagesList } from "../components/chat-messages-list";
-import { ModeToggle } from "../components/mode-toggle";
 import { mockMessages } from "../mock/messages";
 
 export default async function Home() {
   return (
     <HydrateClient>
       <main className="container">
-        <h1 className="text-5xl">Visualize llm chat</h1>
-        <ModeToggle />
         <Tabs defaultValue="chat" className="w-full md:hidden">
           <TabsList className="w-full">
             <TabsTrigger className="w-full" value="chat">
