@@ -8,6 +8,7 @@ import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "next-themes";
 import { AppHeader } from "../components/app-header";
 import { cn } from "../lib/utils";
+import { getServerAuthSession } from "../server/auth";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -20,9 +21,11 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const session = await getServerAuthSession();
+
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body
@@ -38,7 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TRPCReactProvider>
-            <AppHeader />
+            <AppHeader session={session} />
             {children}
           </TRPCReactProvider>
         </ThemeProvider>
