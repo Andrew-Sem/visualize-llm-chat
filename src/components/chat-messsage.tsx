@@ -18,7 +18,7 @@ const UserChatMessage = ({
             ? "rounded-t-lg rounded-bl-lg bg-primary text-primary-foreground"
             : "rounded-lg bg-primary text-primary-foreground",
           "ml-10",
-          "max-w-xs lg:max-w-md",
+          "max-w-md lg:max-w-md",
         )}
       >
         {message.content}
@@ -46,10 +46,10 @@ const NonUserChatMessage = ({
   message: AssistantMessage | ToolMessage;
 }) => {
   return (
-    <div className={cn("relative flex w-full justify-start pr-10")}>
+    <div className={cn("relative flex w-full justify-start pr-4 md:pr-10")}>
       <div
         className={cn(
-          "relative max-w-xs break-words p-4 text-sm lg:max-w-md",
+          "relative max-w-md break-words p-4 text-sm lg:max-w-md",
           lastInGroup
             ? "rounded-t-lg rounded-br-lg bg-secondary text-secondary-foreground"
             : "rounded-lg bg-muted text-secondary-foreground",
@@ -57,7 +57,7 @@ const NonUserChatMessage = ({
       >
         {message.role === "tool" ? (
           <>
-            <pre className="text-wrap break-all text-sm">
+            <pre className="text-wrap break-all">
               {JSON.stringify(message, null, 2)}
             </pre>
             <div className="absolute right-2 top-2 text-muted-foreground">
@@ -66,7 +66,7 @@ const NonUserChatMessage = ({
           </>
         ) : message.tool_calls?.length ? (
           <div>
-            <pre className="text-wrap break-all text-sm">
+            <pre className="text-wrap break-all">
               {JSON.stringify(message, null, 2)}
             </pre>
             <div className="absolute right-2 top-2 text-muted-foreground">
