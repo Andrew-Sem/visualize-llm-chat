@@ -1,4 +1,5 @@
-import { Sparkles } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { EllipsisVerticalIcon, Sparkles } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
 export const AppHeader = () => {
@@ -8,7 +9,19 @@ export const AppHeader = () => {
         <Sparkles className="h-5 w-5" />
         <span className="text-xl">Visualize llm chat</span>
       </div>
-      <ModeToggle />
+      <div className="hidden sm:block">
+        <ModeToggle />
+      </div>
+      <Sheet>
+        <SheetTrigger className="sm:hidden">
+          <EllipsisVerticalIcon className="h-5 w-5" />
+        </SheetTrigger>
+        <SheetContent>
+          <div className="">
+            <ModeToggle />
+          </div>
+        </SheetContent>
+      </Sheet>
     </header>
   );
 };
