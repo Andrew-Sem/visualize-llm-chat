@@ -6,7 +6,7 @@ export default async function Home() {
   return (
     <HydrateClient>
       <main className="md:container">
-        <Vizualizer messages={mockMessages} />
+        <Vizualizer initMessages={mockMessages} />
       </main>
     </HydrateClient>
   );
