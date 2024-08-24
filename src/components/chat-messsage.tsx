@@ -21,12 +21,10 @@ const UserChatMessage = ({
     >
       <div
         className={cn(
-          "relative break-words px-4 py-2 text-sm",
+          "relative ml-10 max-w-md break-words px-4 py-2 text-sm lg:max-w-md",
           lastInGroup
             ? "rounded-t-lg rounded-bl-lg bg-primary text-primary-foreground"
             : "rounded-lg bg-primary text-primary-foreground",
-          "ml-10",
-          "max-w-md lg:max-w-md",
         )}
       >
         {message.content}
@@ -56,13 +54,13 @@ const NonUserChatMessage = ({
   return (
     <div
       className={cn(
-        "relative flex w-full justify-start pr-4 md:pr-10",
+        "relative flex w-full max-w-md justify-start pr-4 md:pr-10 lg:max-w-md",
         message.selected ? "pl-4" : "",
       )}
     >
       <div
         className={cn(
-          "relative max-w-md break-words p-4 text-sm lg:max-w-md",
+          "relative w-full max-w-md break-words p-4 text-sm lg:max-w-md",
           lastInGroup
             ? "rounded-t-lg rounded-br-lg bg-secondary text-secondary-foreground"
             : "rounded-lg bg-muted text-secondary-foreground",
@@ -71,7 +69,7 @@ const NonUserChatMessage = ({
         {message.role === "tool" ? (
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
-              <AccordionTrigger>
+              <AccordionTrigger className="justify-normal space-x-2">
                 <span>Tool result</span>
                 <div className="absolute right-2 top-2 text-muted-foreground">
                   <WrenchIcon className="h-4 w-4" />
@@ -87,7 +85,7 @@ const NonUserChatMessage = ({
         ) : message.tool_calls?.length ? (
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
-              <AccordionTrigger>
+              <AccordionTrigger className="justify-normal space-x-2">
                 <span>Tool call</span>
                 <div className="absolute right-2 top-2 text-muted-foreground">
                   <PhoneIcon className="h-4 w-4" />
