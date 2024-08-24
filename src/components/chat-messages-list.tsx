@@ -24,7 +24,7 @@ export const ChatMessagesList = ({ messages }: { messages: Message[] }) => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       {groupedMessages.map((group, index) => (
         <ChatMessageGroup
           key={index}

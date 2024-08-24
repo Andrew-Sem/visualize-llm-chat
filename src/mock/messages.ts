@@ -4,11 +4,13 @@ export const mockMessages: Message[] = [
   {
     role: "user",
     content: "Привет\n\n",
+    selected: true,
   },
   {
     role: "assistant",
     content:
       'Здравствуйте! Добро пожаловать в отдел работы с экспертами сервиса "Astro7". Как я могу вам помочь сегодня?\n\n',
+    selected: true,
   },
   {
     role: "user",

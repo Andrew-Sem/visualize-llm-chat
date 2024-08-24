@@ -2,6 +2,7 @@ import { z } from "zod";
 
 const BaseMessage = z.object({
   content: z.string().optional(),
+  selected: z.boolean().optional(),
 });
 
 const UserMessage = BaseMessage.extend({
