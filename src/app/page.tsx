@@ -12,7 +12,7 @@ import { mockMessages } from "../mock/messages";
 export default async function Home() {
   return (
     <HydrateClient>
-      <main className="md: container">
+      <main className="md:container">
         <Tabs defaultValue="chat" className="w-full md:hidden">
           <TabsList className="w-full">
             <TabsTrigger className="w-full" value="chat">
