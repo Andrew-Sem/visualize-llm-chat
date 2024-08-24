@@ -12,7 +12,7 @@ import { mockMessages } from "../mock/messages";
 export default async function Home() {
   return (
     <HydrateClient>
-      <main className="container">
+      <main className="md: container">
         <Tabs defaultValue="chat" className="w-full md:hidden">
           <TabsList className="w-full">
             <TabsTrigger className="w-full" value="chat">
@@ -23,12 +23,12 @@ export default async function Home() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="chat">
-            <ScrollArea className="h-[80vh] py-2">
+            <ScrollArea className="h-[85vh] py-0.5">
               <ChatMessagesList messages={mockMessages} />
             </ScrollArea>
           </TabsContent>
           <TabsContent value="json">
-            <ScrollArea className="h-[80vh] p-4">
+            <ScrollArea className="h-[85vh] py-0.5">
               <pre className="text-wrap text-sm">
                 {mockMessages
                   .map((msg) => JSON.stringify(msg, null, 2))
@@ -40,10 +40,10 @@ export default async function Home() {
         <div className="hidden md:block">
           <ResizablePanelGroup
             direction="horizontal"
-            className="mt-8 rounded-lg border"
+            className="rounded-lg border"
           >
             <ResizablePanel defaultSize={50} minSize={10}>
-              <ScrollArea className="h-[80vh] py-4">
+              <ScrollArea className="h-[90vh] py-4">
                 <ChatMessagesList messages={mockMessages} />
               </ScrollArea>
             </ResizablePanel>
@@ -53,7 +53,7 @@ export default async function Home() {
               minSize={30}
               className="hidden md:block"
             >
-              <ScrollArea className="h-[80vh] p-4">
+              <ScrollArea className="h-[90vh] p-4">
                 <pre className="text-wrap text-sm">
                   {mockMessages
                     .map((msg) => JSON.stringify(msg, null, 2))

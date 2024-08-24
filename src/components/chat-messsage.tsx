@@ -16,7 +16,9 @@ const UserChatMessage = ({
   message: Message;
 }) => {
   return (
-    <div className={cn("flex w-full justify-end")}>
+    <div
+      className={cn("flex w-full justify-end", message.selected ? "pr-4" : "")}
+    >
       <div
         className={cn(
           "relative break-words px-4 py-2 text-sm",
@@ -52,7 +54,12 @@ const NonUserChatMessage = ({
   message: AssistantMessage | ToolMessage;
 }) => {
   return (
-    <div className={cn("relative flex w-full justify-start pr-4 md:pr-10")}>
+    <div
+      className={cn(
+        "relative flex w-full justify-start pr-4 md:pr-10",
+        message.selected ? "pl-4" : "",
+      )}
+    >
       <div
         className={cn(
           "relative max-w-md break-words p-4 text-sm lg:max-w-md",

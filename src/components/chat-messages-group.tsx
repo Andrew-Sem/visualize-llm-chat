@@ -11,7 +11,7 @@ export const ChatMessagesGroup = ({
   isUser: boolean;
 }) => {
   return (
-    <div className="relative flex w-full">
+    <div className="relative flex w-full md:px-0">
       <div className="w-full">
         {messages.map((message, index) => (
           <div
@@ -32,7 +32,9 @@ export const ChatMessagesGroup = ({
                 )
               ) : null}
             </div>
-            <div className="flex-grow px-2 py-1">
+            <div
+              className={cn("flex-grow py-1", message.selected ? "" : "px-4")}
+            >
               <ChatMessage
                 message={message}
                 lastInGroup={index === messages.length - 1}
