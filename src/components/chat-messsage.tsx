@@ -57,7 +57,7 @@ const NonUserChatMessage = ({
       >
         {message.role === "tool" ? (
           <>
-            <pre className="text-wrap text-sm">
+            <pre className="text-wrap break-all text-sm">
               {JSON.stringify(message, null, 2)}
             </pre>
             <div className="absolute right-2 top-2 text-muted-foreground">
@@ -66,7 +66,7 @@ const NonUserChatMessage = ({
           </>
         ) : message.tool_calls?.length ? (
           <div>
-            <pre className="text-wrap text-sm">
+            <pre className="text-wrap break-all text-sm">
               {JSON.stringify(message, null, 2)}
             </pre>
             <div className="absolute right-2 top-2 text-muted-foreground">
