@@ -1,5 +1,5 @@
 import { type Message } from "../types/message";
-import { ChatMessageGroup } from "./chat-messages-group";
+import { ChatMessagesGroup } from "./chat-messages-group";
 
 export const ChatMessagesList = ({ messages }: { messages: Message[] }) => {
   const groupedMessages: Message[][] = [];
@@ -26,7 +26,7 @@ export const ChatMessagesList = ({ messages }: { messages: Message[] }) => {
   return (
     <div className="space-y-2">
       {groupedMessages.map((group, index) => (
-        <ChatMessageGroup
+        <ChatMessagesGroup
           key={index}
           messages={group}
           isUser={group[0]?.role === "user"}

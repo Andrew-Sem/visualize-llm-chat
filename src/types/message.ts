@@ -10,12 +10,12 @@ const UserMessage = BaseMessage.extend({
   content: z.string(),
 });
 
-const AssistantMessage = BaseMessage.extend({
+export const AssistantMessage = BaseMessage.extend({
   role: z.literal("assistant"),
   tool_calls: z.array(z.unknown()).optional(),
 });
 
-const ToolMessage = BaseMessage.extend({
+export const ToolMessage = BaseMessage.extend({
   role: z.literal("tool"),
   tool_call_id: z.string(),
   name: z.string(),
@@ -24,3 +24,5 @@ const ToolMessage = BaseMessage.extend({
 const Message = z.union([UserMessage, AssistantMessage, ToolMessage]);
 
 export type Message = z.infer<typeof Message>;
+export type AssistantMessage = z.infer<typeof AssistantMessage>;
+export type ToolMessage = z.infer<typeof ToolMessage>;
