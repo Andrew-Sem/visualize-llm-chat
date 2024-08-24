@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["vizualize-llm-chat_*"],
+  tablesFilter: ["visualize-llm-chat_*"],
 } satisfies Config;

@@ -4,8 +4,8 @@
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.vizualize-llm-chat_account": {
-      "name": "vizualize-llm-chat_account",
+    "public.visualize-llm-chat_account": {
+      "name": "visualize-llm-chat_account",
       "schema": "",
       "columns": {
         "user_id": {
@@ -93,33 +93,26 @@
         }
       },
       "foreignKeys": {
-        "vizualize-llm-chat_account_user_id_vizualize-llm-chat_user_id_fk": {
-          "name": "vizualize-llm-chat_account_user_id_vizualize-llm-chat_user_id_fk",
-          "tableFrom": "vizualize-llm-chat_account",
-          "tableTo": "vizualize-llm-chat_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+        "visualize-llm-chat_account_user_id_visualize-llm-chat_user_id_fk": {
+          "name": "visualize-llm-chat_account_user_id_visualize-llm-chat_user_id_fk",
+          "tableFrom": "visualize-llm-chat_account",
+          "tableTo": "visualize-llm-chat_user",
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "vizualize-llm-chat_account_provider_provider_account_id_pk": {
-          "name": "vizualize-llm-chat_account_provider_provider_account_id_pk",
-          "columns": [
-            "provider",
-            "provider_account_id"
-          ]
+        "visualize-llm-chat_account_provider_provider_account_id_pk": {
+          "name": "visualize-llm-chat_account_provider_provider_account_id_pk",
+          "columns": ["provider", "provider_account_id"]
         }
       },
       "uniqueConstraints": {}
     },
-    "public.vizualize-llm-chat_post": {
-      "name": "vizualize-llm-chat_post",
+    "public.visualize-llm-chat_post": {
+      "name": "visualize-llm-chat_post",
       "schema": "",
       "columns": {
         "id": {
@@ -187,16 +180,12 @@
         }
       },
       "foreignKeys": {
-        "vizualize-llm-chat_post_created_by_vizualize-llm-chat_user_id_fk": {
-          "name": "vizualize-llm-chat_post_created_by_vizualize-llm-chat_user_id_fk",
-          "tableFrom": "vizualize-llm-chat_post",
-          "tableTo": "vizualize-llm-chat_user",
-          "columnsFrom": [
-            "created_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+        "visualize-llm-chat_post_created_by_visualize-llm-chat_user_id_fk": {
+          "name": "visualize-llm-chat_post_created_by_visualize-llm-chat_user_id_fk",
+          "tableFrom": "visualize-llm-chat_post",
+          "tableTo": "visualize-llm-chat_user",
+          "columnsFrom": ["created_by"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -204,8 +193,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.vizualize-llm-chat_session": {
-      "name": "vizualize-llm-chat_session",
+    "public.visualize-llm-chat_session": {
+      "name": "visualize-llm-chat_session",
       "schema": "",
       "columns": {
         "session_token": {
@@ -245,16 +234,12 @@
         }
       },
       "foreignKeys": {
-        "vizualize-llm-chat_session_user_id_vizualize-llm-chat_user_id_fk": {
-          "name": "vizualize-llm-chat_session_user_id_vizualize-llm-chat_user_id_fk",
-          "tableFrom": "vizualize-llm-chat_session",
-          "tableTo": "vizualize-llm-chat_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+        "visualize-llm-chat_session_user_id_visualize-llm-chat_user_id_fk": {
+          "name": "visualize-llm-chat_session_user_id_visualize-llm-chat_user_id_fk",
+          "tableFrom": "visualize-llm-chat_session",
+          "tableTo": "visualize-llm-chat_user",
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -262,8 +247,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.vizualize-llm-chat_user": {
-      "name": "vizualize-llm-chat_user",
+    "public.visualize-llm-chat_user": {
+      "name": "visualize-llm-chat_user",
       "schema": "",
       "columns": {
         "id": {
@@ -303,8 +288,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.vizualize-llm-chat_verification_token": {
-      "name": "vizualize-llm-chat_verification_token",
+    "public.visualize-llm-chat_verification_token": {
+      "name": "visualize-llm-chat_verification_token",
       "schema": "",
       "columns": {
         "identifier": {
@@ -329,12 +314,9 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "vizualize-llm-chat_verification_token_identifier_token_pk": {
-          "name": "vizualize-llm-chat_verification_token_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+        "visualize-llm-chat_verification_token_identifier_token_pk": {
+          "name": "visualize-llm-chat_verification_token_identifier_token_pk",
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}

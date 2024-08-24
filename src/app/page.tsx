@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { HydrateClient } from "@/trpc/server";
-import { Button } from "../components/ui/button";
+import Link from "next/link";
+import { Button, buttonVariants } from "../components/ui/button";
 
 export default async function Home() {
   return (
@@ -12,8 +13,10 @@ export default async function Home() {
             <Badge variant="outline">Why? Cause I can</Badge>
           </div>
           <div className="mt-10 space-x-4">
-            <Button>Create new</Button>
-            <Button variant={"outline"}>My vizualizations</Button>
+            <Link href={"/v/create"} className={buttonVariants()}>
+              Create new
+            </Link>
+            <Button variant={"outline"}>My visualizations</Button>
           </div>
         </section>
       </main>

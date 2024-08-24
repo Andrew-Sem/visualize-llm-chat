@@ -5,14 +5,15 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { ClerkProvider } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { ThemeProvider } from "next-themes";
 import { AppHeader } from "../components/app-header";
 import { cn } from "../lib/utils";
-import { getServerAuthSession } from "../server/auth";
 
 export const metadata: Metadata = {
-  title: "Vizualize llm chat",
-  description: "Vizualize your chat with llm provided as json",
+  title: "visualize llm chat",
+  description: "visualize your chat with llm provided as json",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -24,8 +25,7 @@ const fontSans = FontSans({
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const session = await getServerAuthSession();
-
+  const user = await currentUser();
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body
@@ -34,17 +34,19 @@ export default async function RootLayout({
           fontSans.variable,
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TRPCReactProvider>
-            <AppHeader session={session} />
-            {children}
-          </TRPCReactProvider>
-        </ThemeProvider>
+        <ClerkProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TRPCReactProvider>
+              <AppHeader user={user} />
+              {children}
+            </TRPCReactProvider>
+          </ThemeProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

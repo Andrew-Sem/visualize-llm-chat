@@ -1,12 +1,12 @@
 import { HydrateClient } from "@/trpc/server";
-import { Vizualizer } from "../../components/vizualizer";
+import { Visualizer } from "../../components/visualizer";
 import { mockMessages } from "../../mock/messages";
 
 export default async function Home() {
   return (
     <HydrateClient>
       <main className="md:container">
-        <Vizualizer initMessages={mockMessages} />
+        <Visualizer initMessages={mockMessages} />
       </main>
     </HydrateClient>
   );

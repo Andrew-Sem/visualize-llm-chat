@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { type Message } from "../types/message";
 import { JsonEditor } from "./json-editor";
 
-export const Vizualizer = ({ initMessages }: { initMessages: Message[] }) => {
+export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
   const [messages, setMessages] = useState<Message[]>(initMessages);
   const [jsonText, setJsonText] = useState("");
 
