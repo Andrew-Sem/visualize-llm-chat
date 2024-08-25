@@ -43,7 +43,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <TRPCReactProvider>
-              <AppHeader user={user} />
+              <AppHeader isUser={!!user} />
               {children}
               <Toaster />
             </TRPCReactProvider>
