@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEffect, useState } from "react";
 import { type Message } from "../types/message";
 import { JsonEditor } from "./json-editor";
+import { Badge } from "./ui/badge";
 
 export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
   const [messages, setMessages] = useState<Message[]>(initMessages);
@@ -49,8 +50,11 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
             <ChatMessagesList messages={messages} />
           </ScrollArea>
         </TabsContent>
-        <TabsContent value="json">
-          <ScrollArea className="h-[90vh] py-4">
+        <TabsContent value="json" className="flex flex-col space-y-2">
+          <Badge variant={"secondary"} className="self-center">
+            Edit JSON feature is in progress for now
+          </Badge>
+          <ScrollArea className="h-[80vh]">
             <JsonEditor value={jsonText} onChange={handleJsonChange} />
           </ScrollArea>
         </TabsContent>
@@ -69,9 +73,12 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
           <ResizablePanel
             defaultSize={50}
             minSize={30}
-            className="hidden md:block"
+            className="hidden flex-col space-y-4 p-4 md:flex"
           >
-            <ScrollArea className="h-[90vh] p-4">
+            <Badge variant={"secondary"} className="self-center">
+              Edit JSON feature is in progress for now
+            </Badge>
+            <ScrollArea className="h-[80vh]">
               <JsonEditor value={jsonText} onChange={handleJsonChange} />
             </ScrollArea>
           </ResizablePanel>
