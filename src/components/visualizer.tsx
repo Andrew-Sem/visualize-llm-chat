@@ -37,7 +37,7 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
   return (
     <>
       <Tabs defaultValue="chat" className="w-full md:hidden">
-        <TabsList className="w-full">
+        <TabsList className="sticky top-0 z-10 w-full">
           <TabsTrigger className="w-full" value="chat">
             Chat
           </TabsTrigger>
@@ -46,17 +46,13 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="chat">
-          <ScrollArea className="h-[90vh] py-4">
-            <ChatMessagesList messages={messages} />
-          </ScrollArea>
+          <ChatMessagesList messages={messages} />
         </TabsContent>
         <TabsContent value="json" className="flex flex-col space-y-2">
           <Badge variant={"secondary"} className="self-center">
             Edit JSON feature is in progress for now
           </Badge>
-          <ScrollArea className="h-[80vh]">
-            <JsonEditor value={jsonText} onChange={handleJsonChange} />
-          </ScrollArea>
+          <JsonEditor value={jsonText} onChange={handleJsonChange} />
         </TabsContent>
       </Tabs>
       <div className="hidden md:block">
@@ -65,7 +61,7 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
           className="rounded-lg border"
         >
           <ResizablePanel defaultSize={40} minSize={35}>
-            <ScrollArea className="h-[90vh] py-4">
+            <ScrollArea className="h-[70vh] py-4">
               <ChatMessagesList messages={messages} />
             </ScrollArea>
           </ResizablePanel>
@@ -78,7 +74,7 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
             <Badge variant={"secondary"} className="self-center">
               Edit JSON feature is in progress for now
             </Badge>
-            <ScrollArea className="h-[80vh]">
+            <ScrollArea className="h-[70vh]">
               <JsonEditor value={jsonText} onChange={handleJsonChange} />
             </ScrollArea>
           </ResizablePanel>

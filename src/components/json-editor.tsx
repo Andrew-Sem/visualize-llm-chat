@@ -9,7 +9,7 @@ interface JsonEditorProps {
 export const JsonEditor: React.FC<JsonEditorProps> = ({ value, onChange }) => {
   return (
     <Textarea
-      className="h-[80vh] w-full resize-none p-2 font-mono text-sm"
+      className="min-h-[90vh] w-full resize-none p-2 font-mono text-sm md:max-h-[70vh] md:min-h-[69vh]"
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />
