@@ -1,29 +1,52 @@
-# Create T3 App
+# LLM Chat Visualizer
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A simple UI to visualize and share LLM chat conversations.
 
-## What's next? How do I make an app with this?
+## Motivation
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+When working with Large Language Models (LLMs), we may encounter incorrect behavior, such as inaccurate responses or improperly invoked function calls. To fix these bugs, we need to reproduce them, which often requires preserving or sharing the dialogue context. Traditional methods like screenshots or raw JSON logs have limitations:
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- Screenshots lack full context and can be cumbersome to manage.
+- Raw JSON logs are tedious to analyze.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+This project aims to combine the advantages of both approaches, creating what we call "live screenshots" - fully isolated, visualized dialogues that are easy to share and analyze.
 
-## Learn More
+## Features
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+While still in development, our current and planned features include:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- Save and share visualizations of chat conversations
+- Highlight important parts of the dialogue (using the `selected` prop)
+- Edit and save JSON (planned)
+- Add comments to individual messages (planned)
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Usage
 
-## How do I deploy this?
+### Content Format
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+The visualizer supports a simplified version of the OpenAI messages format (without complex content). The base schema definition is as follows (subject to change in future updates):
+
+```typescript
+const BaseMessage = z.object({
+  content: z.string().optional(),
+  selected: z.boolean().optional(),
+});
+
+const UserMessage = BaseMessage.extend({
+  role: z.literal("user"),
+  content: z.string(),
+});
+
+const AssistantMessage = BaseMessage.extend({
+  role: z.literal("assistant"),
+  tool_calls: z.array(z.unknown()).optional(),
+});
+
+const ToolMessage = BaseMessage.extend({
+  role: z.literal("tool"),
+  tool_call_id: z.string(),
+  name: z.string(),
+});
+
+export const Message = z.union([UserMessage, AssistantMessage, ToolMessage]);
+```
