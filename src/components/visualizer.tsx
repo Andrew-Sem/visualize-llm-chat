@@ -61,7 +61,7 @@ export const Visualizer = ({ initMessages }: { initMessages: Message[] }) => {
           className="rounded-lg border"
         >
           <ResizablePanel defaultSize={40} minSize={35}>
-            <ScrollArea className="h-[70vh] py-4">
+            <ScrollArea className="h-[80vh] py-4">
               <ChatMessagesList messages={messages} />
             </ScrollArea>
           </ResizablePanel>
