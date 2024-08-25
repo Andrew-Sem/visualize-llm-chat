@@ -2,17 +2,22 @@ import { db } from "@/server/db";
 import { visualizations } from "@/server/db/schema";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { Message } from "../../../types/message";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const visualizationRouter = createTRPCRouter({
   create: protectedProcedure
-    .input(z.object({ content: z.array(Message) }))
+    .input(
+      z.object({
+        content: z.string(),
+        title: z.string(),
+        description: z.string().optional(),
+      }),
+    )
     .mutation(async ({ ctx, input }) => {
       const [insertedRecord] = await db
         .insert(visualizations)
         .values({
-          content: JSON.stringify(input.content),
+          ...input,
           createdById: ctx.userId,
         })
         .returning({ id: visualizations.id });
@@ -27,7 +32,13 @@ export const visualizationRouter = createTRPCRouter({
     .input(z.object({ id: z.string() }))
     .query(async ({ ctx, input }) => {
       return await ctx.db.query.visualizations.findFirst({
-        where: (table, { eq }) => eq(table.id, input.id),
+        where: (visualizations, { eq }) => eq(visualizations.id, input.id),
       });
     }),
+  getAllForUser: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.db.query.visualizations.findMany({
+      where: (table, { eq }) => eq(table.createdById, ctx.userId),
+      orderBy: (visualizations, { asc }) => [asc(visualizations.id)],
+    });
+  }),
 });

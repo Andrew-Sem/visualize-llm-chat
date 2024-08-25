@@ -23,6 +23,8 @@ export const visualizations = createTable("visualization", {
     .notNull()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: varchar("description", { length: 255 }),
   content: text("content").notNull(),
   createdById: varchar("created_by", { length: 255 })
     .notNull()

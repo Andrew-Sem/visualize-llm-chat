@@ -1,10 +1,10 @@
-import { CreateVisualization } from "../../../components/create-visualization";
+import { CreateVisualizationForm } from "@/components/create-visualization-form";
 
 export default function CreatePage() {
   return (
-    <main className="flex justify-center">
+    <main className="container flex justify-center">
       <div className="w-full max-w-xl">
-        <CreateVisualization />
+        <CreateVisualizationForm />
       </div>
     </main>
   );
