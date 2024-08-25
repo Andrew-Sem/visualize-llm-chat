@@ -6,14 +6,19 @@ import {
 } from "@/components/ui/accordion";
 import { PhoneIcon, WrenchIcon } from "lucide-react";
 import { cn } from "../lib/utils";
-import type { AssistantMessage, Message, ToolMessage } from "../types/message";
+import type {
+  AssistantMessage,
+  Message,
+  ToolMessage,
+  UserMessage,
+} from "../types/message";
 
 const UserChatMessage = ({
   lastInGroup,
   message,
 }: {
   lastInGroup: boolean;
-  message: Message;
+  message: UserMessage;
 }) => {
   return (
     <div
