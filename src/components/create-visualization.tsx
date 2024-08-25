@@ -12,6 +12,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Message } from "@/types/message";
 import { jsonrepair } from "jsonrepair";
+import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -19,8 +20,13 @@ import { api } from "../trpc/react";
 import { Loader } from "./ui/loader";
 
 export const CreateVisualization = () => {
+  const router = useRouter();
   const [content, setContent] = useState("");
-  const createVisualizationMutation = api.visualization.create.useMutation();
+  const createVisualizationMutation = api.visualization.create.useMutation({
+    onSuccess: (data) => {
+      router.push(`/v/${data.id}`);
+    },
+  });
   const createVisualizationHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
