@@ -7,11 +7,13 @@ export default async function Home() {
   return (
     <HydrateClient>
       <main className="container">
-        <section className="mt-20 text-center">
-          <h1 className="text-5xl lg:text-6xl">Visualize LLM chat</h1>
-          <div className="mt-2">
+        <section className="mt-16 text-center">
+          <div className="mb-2">
             <Badge variant="outline">Why? Cause I can</Badge>
           </div>
+          <h1 className="inline-block bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text font-sans text-5xl font-extrabold text-transparent lg:text-6xl">
+            Visualize LLM chat
+          </h1>
           <div className="mt-10 space-x-4">
             <Link href={"/v/create"} className={buttonVariants()}>
               Create new
