@@ -20,6 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useState } from "react";
 import { Input } from "./ui/input";
 import { Loader } from "./ui/loader";
 
@@ -47,10 +48,12 @@ const formSchema = z.object({
 });
 
 export const CreateVisualizationForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const createVisualizationMutation = api.visualization.create.useMutation({
     onSuccess: (data) => {
       router.push(`/v/${data.id}`);
+      setIsLoading(false);
     },
   });
 
@@ -64,6 +67,7 @@ export const CreateVisualizationForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
     createVisualizationMutation.mutate(values);
   }
 
@@ -122,12 +126,12 @@ export const CreateVisualizationForm = () => {
           )}
         />
         <Button
-          disabled={createVisualizationMutation.isPending}
+          disabled={isLoading}
           type="submit"
           className="space-x-2 self-end"
         >
-          {createVisualizationMutation.isPending && <Loader size={"sm"} />}
-          <span>Submit</span>
+          {isLoading && <Loader size={"sm"} />}
+          <span>Create</span>
         </Button>
       </form>
     </Form>
