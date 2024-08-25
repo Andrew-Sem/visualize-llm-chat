@@ -4,6 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
+import { Toaster } from "@/components/ui/sonner";
 import { TRPCReactProvider } from "@/trpc/react";
 import { ClerkProvider } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
@@ -44,6 +45,7 @@ export default async function RootLayout({
             <TRPCReactProvider>
               <AppHeader user={user} />
               {children}
+              <Toaster />
             </TRPCReactProvider>
           </ThemeProvider>
         </ClerkProvider>

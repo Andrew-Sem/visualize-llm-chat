@@ -59,6 +59,7 @@ export async function POST(req: Request) {
 
   if (eventType === "user.created")
     await db.insert(users).values({
+      id,
       name: evt.data.first_name,
       email: evt.data.email_addresses[0]?.email_address,
       image: evt.data.image_url,

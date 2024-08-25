@@ -21,7 +21,7 @@ export const ToolMessage = BaseMessage.extend({
   name: z.string(),
 });
 
-const Message = z.union([UserMessage, AssistantMessage, ToolMessage]);
+export const Message = z.union([UserMessage, AssistantMessage, ToolMessage]);
 
 export type Message = z.infer<typeof Message>;
 export type AssistantMessage = z.infer<typeof AssistantMessage>;
