@@ -38,7 +38,8 @@ const formSchema = z.object({
           return false;
         }
         return true;
-      } catch (_) {
+      } catch (e) {
+        console.log(e);
         toast("Invalid JSON");
         return false;
       }

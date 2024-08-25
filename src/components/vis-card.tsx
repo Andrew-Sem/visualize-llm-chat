@@ -14,7 +14,7 @@ export const VisCard = ({
   title,
   description,
 }: {
-  messages: Message;
+  messages: Message[];
   createdAt: Date;
   title: string;
   description: string | null;
